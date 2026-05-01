@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PAW Patrol Math Rescue!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== SCREEN 1: TITLE SCREEN ===== -->
+<div id="screen-title" class="screen active">
+  <div class="sky-bg">
+    <div class="clouds"><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div></div>
+  </div>
+  <div class="mountain-bg"></div>
+  <div class="tower-container">
+    <div class="paw-tower">
+      <div class="tower-top">
+        <div class="tower-light"></div>
+        <div class="tower-flag">🐾</div>
+      </div>
+      <div class="tower-body">
+        <div class="tower-window">🪟</div>
+        <div class="tower-window">🪟</div>
+      </div>
+      <div class="tower-base"></div>
+    </div>
+  </div>
+  <div class="title-content">
+    <div class="paw-logo">🐾</div>
+    <h1 class="game-title">PAW PATROL</h1>
+    <h2 class="game-subtitle">Math Rescue!</h2>
+    <p class="game-tagline">No job is too big, no number too small!</p>
+    <button class="btn-main pulse" onclick="goTo('screen-level')">🚀 START MISSION</button>
+    <button class="btn-secondary" onclick="goTo('screen-howto')">📖 How To Play</button>
+    <div class="creator-badge">
+      <p>🐾 PAW Patrol created by <strong>Keith Chapman</strong></p>
+      <p>Developed by <strong>Spin Master Entertainment</strong> · Premiered <strong>2013</strong></p>
+    </div>
+  </div>
+  <div class="ground"></div>
+</div>
+
+<!-- ===== SCREEN 2: HOW TO PLAY ===== -->
+<div id="screen-howto" class="screen">
+  <div class="sky-bg-light"></div>
+  <div class="panel-card">
+    <button class="back-btn" onclick="goBack()">◀ Back</button>
+    <h2>📖 How To Play</h2>
+    <div class="howto-steps">
+      <div class="step"><span class="step-num">1</span><p>Choose your <strong>difficulty level</strong>: Easy, Medium, or Hard.</p></div>
+      <div class="step"><span class="step-num">2</span><p><strong>Ryder</strong> will describe an emergency situation via video/image.</p></div>
+      <div class="step"><span class="step-num">3</span><p>Choose the right <strong>PAW Patrol pup</strong> for the rescue mission!</p></div>
+      <div class="step"><span class="step-num">4</span><p>Solve an <strong>integer math problem</strong> to power up the rescue.</p></div>
+      <div class="step"><span class="step-num">5</span><p>Answer correctly to <strong>complete the rescue</strong> and earn a badge!</p></div>
+    </div>
+    <div class="howto-ops">
+      <span>➕ Addition</span><span>➖ Subtraction</span><span>✖️ Multiplication</span><span>➗ Division</span>
+    </div>
+    <div class="media-guide">
+      <h3>🎬 Adding Your Own Videos & Images</h3>
+      <p>See the included <strong>MEDIA_GUIDE.html</strong> for step-by-step instructions on adding character videos and images to the game.</p>
+    </div>
+  </div>
+  <div class="ground"></div>
+</div>
+
+<!-- ===== SCREEN 3: LEVEL SELECT ===== -->
+<div id="screen-level" class="screen">
+  <div class="sky-bg"></div>
+  <div class="panel-card">
+    <button class="back-btn" onclick="goBack()">◀ Back</button>
+    <h2>🎯 Choose Your Level</h2>
+    <div class="level-grid">
+      <div class="level-card easy" onclick="selectLevel('easy')">
+        <div class="level-icon">🌟</div>
+        <h3>EASY</h3>
+        <p>Small numbers<br/>+  and  −</p>
+        <p class="level-range">Numbers: 1 – 20</p>
+      </div>
+      <div class="level-card medium" onclick="selectLevel('medium')">
+        <div class="level-icon">⭐⭐</div>
+        <h3>MEDIUM</h3>
+        <p>Bigger numbers<br/>All operations</p>
+        <p class="level-range">Numbers: 1 – 50</p>
+      </div>
+      <div class="level-card hard" onclick="selectLevel('hard')">
+        <div class="level-icon">🌠</div>
+        <h3>HARD</h3>
+        <p>Negative integers<br/>All operations</p>
+        <p class="level-range">Numbers: −50 – 50</p>
+      </div>
+    </div>
+  </div>
+  <div class="ground"></div>
+</div>
+
+<!-- ===== SCREEN 4: MISSION BRIEF (Ryder's Situation) ===== -->
+<div id="screen-mission" class="screen">
+  <div class="sky-bg"></div>
+  <div class="panel-card mission-panel">
+    <button class="back-btn" onclick="goBack()">◀ Back</button>
+    <div class="ryder-box">
+      <!-- VIDEO/IMAGE PLACEHOLDER FOR RYDER -->
+      <div class="media-placeholder" id="ryder-media">
+        <video id="ryder-video" class="character-video" autoplay loop muted playsinline style="display:none;">
+          <!-- TO ADD VIDEO: place ryder.mp4 in /videos/ folder and uncomment below -->
+          <!-- <source src="videos/ryder.mp4" type="video/mp4"> -->
+        </video>
+        <img id="ryder-img" class="character-img" src="" alt="Ryder" style="display:none;"
+          onerror="this.style.display='none'; document.getElementById('ryder-emoji').style.display='block'"/>
+        <!-- TO ADD IMAGE: place ryder.png in /images/ folder, set src="images/ryder.png" -->
+        <div id="ryder-emoji" class="char-emoji">👦</div>
+      </div>
+      <div class="ryder-speech">
+        <div class="speech-bubble">
+          <p class="ryder-name">🎙️ RYDER SAYS:</p>
+          <p id="mission-text" class="mission-description">Loading mission...</p>
+        </div>
+      </div>
+    </div>
+    <button class="btn-main" onclick="goTo('screen-pup')">Choose a Pup! 🐾</button>
+  </div>
+  <div class="ground"></div>
+</div>
+
+<!-- ===== SCREEN 5: PUP SELECTION ===== -->
+<div id="screen-pup" class="screen">
+  <div class="sky-bg"></div>
+  <div class="panel-card">
+    <button class="back-btn" onclick="goBack()">◀ Back</button>
+    <h2>🐾 Which Pup Should We Call?</h2>
+    <p class="pup-hint" id="pup-hint">Pick the best pup for this mission!</p>
+    <div class="pup-grid" id="pup-grid">
+      <!-- Pups inserted by JS -->
+    </div>
+    <p id="pup-feedback" class="pup-feedback"></p>
+  </div>
+  <div class="ground"></div>
+</div>
+
+<!-- ===== SCREEN 6: MATH CHALLENGE ===== -->
+<div id="screen-math" class="screen">
+  <div class="sky-bg"></div>
+  <div class="panel-card math-panel">
+    <button class="back-btn" onclick="goBack()">◀ Back</button>
+    <div class="selected-pup-banner" id="selected-pup-banner"></div>
+    <h2>🔢 Solve to Power the Rescue!</h2>
+    <div class="math-problem-box">
+      <p id="math-context" class="math-context"></p>
+      <div class="equation" id="equation">? + ? = ?</div>
+    </div>
+    <div class="answer-area">
+      <input type="number" id="answer-input" class="answer-input" placeholder="Your answer..." />
+      <button class="btn-main" onclick="checkAnswer()">✅ Submit!</button>
+    </div>
+    <p id="math-feedback" class="math-feedback"></p>
+    <div class="attempts-display">
+      <span id="attempts-left">3 attempts left</span>
+    </div>
+  </div>
+  <div class="ground"></div>
+</div>
+
+<!-- ===== SCREEN 7: RESCUE SUCCESS ===== -->
+<div id="screen-success" class="screen">
+  <div class="sky-bg party"></div>
+  <div class="panel-card success-panel">
+    <div class="confetti-area" id="confetti"></div>
+    <h1 class="success-title">🎉 RESCUE COMPLETE! 🎉</h1>
+    <div class="success-pup" id="success-pup-img">
+      <!-- Pup image shown here -->
+    </div>
+    <p id="success-msg" class="success-msg"></p>
+    <div class="badge-earned">
+      <div class="badge">🏅</div>
+      <p>Badge Earned!</p>
+    </div>
+    <div class="score-display">
+      <span>Score: </span><span id="current-score" class="score-num">0</span>
+    </div>
+    <button class="btn-main" onclick="nextMission()">Next Mission! 🚀</button>
+    <button class="btn-secondary" onclick="goTo('screen-title')">🏠 Main Menu</button>
+  </div>
+  <div class="ground"></div>
+</div>
+
+<!-- ===== SCREEN 8: GAME OVER ===== -->
+<div id="screen-gameover" class="screen">
+  <div class="sky-bg dark"></div>
+  <div class="panel-card gameover-panel">
+    <h1>😔 Mission Failed</h1>
+    <p>Don't worry! Every pup learns from their mistakes.</p>
+    <p id="correct-answer-reveal" class="reveal-answer"></p>
+    <button class="btn-main" onclick="retryMission()">🔄 Try Again</button>
+    <button class="btn-secondary" onclick="goTo('screen-level')">📋 Change Level</button>
+    <button class="btn-secondary" onclick="goTo('screen-title')">🏠 Main Menu</button>
+  </div>
+  <div class="ground"></div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
